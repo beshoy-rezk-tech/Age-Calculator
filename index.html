@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h1>Age Calculator</h1>
+                <p>Enter your date of birth below</p>
+                <button id="dark-mode-toggle" class="feature-btn" aria-label="Toggle dark mode" style="position:absolute;top:1rem;right:1rem;">🌙</button>
+            </div>
+            <div class="card-body">
+                <div class="input-group">
+                    <input type="date" id="birthdate">
+                    <button id="calculate-btn">Calculate</button>
+                </div>
+                <div id="loading-spinner" class="loading-spinner" style="display:none;"></div>
+                <p id="error-msg" class="error-msg"></p>
+            </div>
+            <div id="result" class="card-footer" style="display: none;">
+                <div class="age-display">
+                    <div><span id="years">-</span>Years</div>
+                    <div><span id="months">-</span>Months</div>
+                    <div><span id="days">-</span>Days</div>
+                </div>
+                <div class="age-details">
+                    <h3>Details</h3>
+                    <p><strong>Total Months:</strong> <span id="total-months">-</span></p>
+                    <p><strong>Total Weeks:</strong> <span id="total-weeks">-</span></p>
+                    <p><strong>Total Days:</strong> <span id="total-days">-</span></p>
+                    <p><strong>Total Hours:</strong> <span id="total-hours">-</span></p>
+                    <p><strong>Total Minutes:</strong> <span id="total-minutes">-</span></p>
+                    <p><strong>Next Birthday in:</strong> <span id="next-birthday">-</span></p>
+                </div>
+                <div id="fun-facts-section" style="margin:2rem 0 1rem 0;"></div>
+                <div id="feature-btn-group" style="text-align:center;margin-top:1.5rem;">
+                    <button id="share-btn" class="feature-btn" aria-label="Share result"><span aria-hidden="true">📤</span><span class="visually-hidden">Share</span></button>
+                    <button id="save-btn" class="feature-btn" aria-label="Save birthday"><span aria-hidden="true">💾</span><span class="visually-hidden">Save</span></button>
+                </div>
+                <div id="saved-birthdays" class="saved-birthdays-list" style="display:none;"></div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

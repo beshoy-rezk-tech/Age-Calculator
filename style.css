@@ -1,0 +1,549 @@
+:root {
+    --primary-color: #4a90e2;
+    --secondary-color: #f5a623;
+    --background-color: #f0f2f5;
+    --card-bg-color: #ffffff;
+    --text-color: #333;
+    --light-text-color: #777;
+    --border-color: #e0e0e0;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 1rem;
+    transition: background 0.5s;
+    /* Animated gradient effect */
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+body.dark-mode {
+    background: linear-gradient(135deg, #232526 0%, #414345 100%);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+}
+
+.container {
+    width: 100%;
+    max-width: 500px;
+}
+
+.card {
+    background: var(--card-bg-color);
+    border-radius: 24px;
+    box-shadow: 0 16px 40px 0 rgba(74, 144, 226, 0.13), 0 2px 8px 0 rgba(0,0,0,0.08);
+    overflow: hidden;
+    transition: transform 0.3s cubic-bezier(.4,2,.6,1), box-shadow 0.3s, background 0.5s;
+    margin-bottom: 2rem;
+    border: 1.5px solid var(--border-color);
+}
+
+.card:hover {
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: 0 24px 48px 0 rgba(74, 144, 226, 0.18), 0 6px 16px 0 rgba(0,0,0,0.10);
+}
+
+.card-header {
+    background: linear-gradient(90deg, var(--primary-color) 60%, var(--secondary-color) 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+    box-shadow: 0 2px 8px 0 var(--shadow-color);
+}
+
+.card-header h1 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.card-header p {
+    margin: 0.5rem 0 0;
+    font-weight: 300;
+    opacity: 0.9;
+}
+
+#dark-mode-toggle {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(255,255,255,0.15);
+    border: none;
+    color: #fff;
+    font-size: 1.3rem;
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px 0 var(--shadow-color);
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+    z-index: 2;
+}
+#dark-mode-toggle:hover, #dark-mode-toggle:focus {
+    background: rgba(255,255,255,0.25);
+    color: var(--secondary-color);
+    outline: none;
+}
+
+.card-body {
+    padding: 2rem;
+    background: transparent;
+}
+
+.input-group {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+#birthdate {
+    flex-grow: 1;
+    padding: 0.75rem 1rem;
+    border: 1.5px solid var(--border-color);
+    border-radius: 12px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    background: #f8fafc;
+}
+#birthdate:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.15);
+}
+
+#calculate-btn {
+    background: linear-gradient(135deg, var(--primary-color) 60%, var(--secondary-color) 100%);
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    padding: 0.85rem 2.2rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0.5rem 0.5rem 0.5rem 0;
+    cursor: pointer;
+    box-shadow: 0 4px 16px 0 var(--shadow-color);
+    transition: background 0.3s, box-shadow 0.3s, transform 0.15s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 0.5px;
+    outline: none;
+    position: relative;
+    overflow: hidden;
+}
+#calculate-btn:hover, #calculate-btn:focus {
+    background: linear-gradient(135deg, #357ABD 60%, #f5a623 100%);
+    box-shadow: 0 8px 24px 0 var(--shadow-color);
+    transform: scale(1.07);
+    color: #fff;
+}
+#calculate-btn:active {
+    transform: scale(0.97);
+}
+
+.feature-btn, #copy-card-btn {
+    width: 3.5rem;
+    height: 3.5rem;
+    min-width: 3.5rem;
+    min-height: 3.5rem;
+    max-width: 3.5rem;
+    max-height: 3.5rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color) 60%, var(--secondary-color) 100%);
+    color: #fff;
+    border: none;
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0.5rem 0.5rem 0.5rem 0;
+    cursor: pointer;
+    box-shadow: 0 4px 16px 0 var(--shadow-color);
+    transition: background 0.3s, box-shadow 0.3s, transform 0.15s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+}
+.feature-btn:hover, .feature-btn:focus, #copy-card-btn:hover, #copy-card-btn:focus {
+    background: linear-gradient(135deg, #357ABD 60%, #f5a623 100%);
+    box-shadow: 0 8px 24px 0 var(--shadow-color);
+    transform: scale(1.12);
+    color: #fff;
+}
+.feature-btn:active, #copy-card-btn:active {
+    transform: scale(0.95);
+}
+
+.error-msg {
+    color: #e74c3c;
+    min-height: 1.2em;
+    font-size: 0.95rem;
+    text-align: center;
+    margin-top: 0.5rem;
+}
+
+.card-footer {
+    padding: 0 2rem 2rem;
+    animation: fadeIn 0.5s ease-in-out;
+    background: transparent;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.age-display {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: linear-gradient(90deg, #f0f2f5 60%, #e0eafc 100%);
+    border-radius: 16px;
+    box-shadow: 0 2px 8px 0 var(--shadow-color);
+    transition: background 0.5s;
+}
+body.dark-mode .age-display {
+    background: linear-gradient(90deg, #232526 60%, #414345 100%);
+}
+
+.age-display div {
+    font-size: 1.1rem;
+    color: var(--light-text-color);
+}
+
+.age-display span {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    letter-spacing: 1px;
+}
+
+.age-details h3 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    color: var(--text-color);
+    position: relative;
+    letter-spacing: 1px;
+}
+
+.age-details h3::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+
+.age-details p {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 1.05rem;
+}
+
+.age-details p:last-child {
+    border-bottom: none;
+}
+
+.age-details span {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.input-error {
+    border-color: #e74c3c !important;
+    box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.15) !important;
+}
+
+/* Loading spinner styles */
+.loading-spinner {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    border: 4px solid var(--border-color);
+    border-top: 4px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 1rem auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Fun facts section styling */
+.fun-facts-section {
+    background: linear-gradient(135deg, #f0f2f5 0%, #e0eafc 100%);
+    border-radius: 16px;
+    box-shadow: 0 2px 8px var(--shadow-color);
+    padding: 1.5rem 1rem;
+    margin: 2rem 0 1rem 0;
+    color: var(--text-color);
+    transition: background 0.5s, color 0.5s;
+}
+body.dark-mode .fun-facts-section {
+    background: linear-gradient(135deg, #232526 0%, #414345 100%);
+    color: #f0f2f5;
+}
+.fun-fact-item {
+    margin-bottom: 1rem;
+    font-size: 1.08rem;
+    line-height: 1.6;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-left: 0.5rem;
+}
+.fun-fact-item:last-child {
+    margin-bottom: 0;
+}
+
+/* Feature: Toggle, Share, Save buttons */
+.feature-btn {
+    background: linear-gradient(90deg, var(--secondary-color) 60%, var(--primary-color) 100%);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 0.5rem 1.2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0.25rem;
+    cursor: pointer;
+    transition: background 0.3s, box-shadow 0.3s;
+    box-shadow: 0 2px 8px 0 var(--shadow-color);
+}
+.feature-btn:hover, .feature-btn:focus {
+    background: linear-gradient(90deg, #d48806 60%, #357ABD 100%);
+    box-shadow: 0 4px 16px 0 var(--shadow-color);
+    outline: none;
+}
+
+.saved-birthdays-list {
+    margin: 1rem 0;
+    padding: 0.5rem;
+    background: var(--background-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px var(--shadow-color);
+}
+.saved-birthday-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+.saved-birthday-item:last-child {
+    border-bottom: none;
+}
+
+.custom-tooltip {
+    position: absolute;
+    background: var(--card-bg-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    box-shadow: 0 2px 8px var(--shadow-color);
+    z-index: 1000;
+    pointer-events: none;
+    white-space: nowrap;
+    transition: opacity 0.2s;
+}
+body.dark-mode .custom-tooltip {
+    background: #232526;
+    color: #f0f2f5;
+    border-color: #333;
+}
+
+/* Responsive improvements */
+@media (max-width: 900px) {
+    .container {
+        max-width: 95vw;
+    }
+    .card {
+        margin-bottom: 1rem;
+    }
+    .card-header, .card-body, .card-footer {
+        padding: 1.2rem;
+    }
+    .age-display {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        max-width: 100vw;
+        padding: 0;
+    }
+    .card {
+        border-radius: 0;
+        box-shadow: none;
+        margin-bottom: 0;
+    }
+    .card-header, .card-body, .card-footer {
+        padding: 0.7rem;
+    }
+    .age-display {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 0.7rem;
+    }
+    .fun-facts-section {
+        padding: 0.7rem 0.3rem;
+        font-size: 0.98rem;
+    }
+    #calculate-btn {
+        font-size: 1.05rem;
+        padding: 0.7rem 1.2rem;
+    }
+    .feature-btn, #copy-card-btn {
+        width: 2.7rem;
+        height: 2.7rem;
+        min-width: 2.7rem;
+        min-height: 2.7rem;
+        max-width: 2.7rem;
+        max-height: 2.7rem;
+        font-size: 1.3rem;
+    }
+    .age-display span {
+        font-size: 1.7rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .card-header h1 {
+        font-size: 1.2rem;
+    }
+    .age-details h3 {
+        font-size: 1rem;
+    }
+    .fun-facts-section {
+        font-size: 0.92rem;
+    }
+    #calculate-btn {
+        font-size: 0.95rem;
+        padding: 0.5rem 0.7rem;
+    }
+}
+
+@media (max-width: 350px) {
+    .container {
+        max-width: 100vw;
+        padding: 0;
+    }
+    .card-header, .card-body, .card-footer {
+        padding: 0.4rem;
+    }
+    .card-header h1 {
+        font-size: 1rem;
+    }
+    .age-details h3 {
+        font-size: 0.92rem;
+    }
+    .fun-facts-section {
+        font-size: 0.85rem;
+        padding: 0.4rem 0.1rem;
+    }
+    #calculate-btn {
+        font-size: 0.85rem;
+        padding: 0.4rem 0.5rem;
+    }
+    .feature-btn, #copy-card-btn {
+        width: 2.1rem;
+        height: 2.1rem;
+        min-width: 2.1rem;
+        min-height: 2.1rem;
+        max-width: 2.1rem;
+        max-height: 2.1rem;
+        font-size: 1rem;
+    }
+    .age-display span {
+        font-size: 1.1rem;
+    }
+    .age-details p {
+        font-size: 0.85rem;
+    }
+}
+
+/* Accessibility improvements */
+#calculate-btn:focus, #birthdate:focus {
+    outline: 2px solid var(--secondary-color);
+    outline-offset: 2px;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+}
+
+.feature-btn[aria-label]:hover::after, .feature-btn[aria-label]:focus::after, #copy-card-btn[aria-label]:hover::after, #copy-card-btn[aria-label]:focus::after {
+    content: attr(aria-label);
+    position: absolute;
+    top: -2.2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #222b;
+    color: #fff;
+    padding: 0.35rem 0.9rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 1;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    transition: opacity 0.2s;
+}
+.feature-btn[aria-label]::after, #copy-card-btn[aria-label]::after {
+    opacity: 0;
+    pointer-events: none;
+}
+.feature-btn[aria-label]:hover::after, .feature-btn[aria-label]:focus::after, #copy-card-btn[aria-label]:hover::after, #copy-card-btn[aria-label]:focus::after {
+    opacity: 1;
+}
